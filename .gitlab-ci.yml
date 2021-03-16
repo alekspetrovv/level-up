@@ -1,0 +1,14 @@
+stages:
+  - build
+  - test
+build:
+  stage: build
+  script:
+    - ./Application/gradlew assemble
+test:
+  stage: test
+  script:
+    - ./Application/gradlew test
+  dependencies:
+    - build
+
