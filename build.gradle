@@ -7,7 +7,6 @@ plugins {
 group = 'level.up'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
-
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
@@ -17,6 +16,7 @@ configurations {
 repositories {
     mavenCentral()
 }
+
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
