@@ -4,10 +4,12 @@ stages:
 build:
   stage: build
   script:
+    - cd Application
     - ./gradlew assemble
 test:
   stage: test
   script:
+    - cd Application
     - ./gradlew test
   dependencies:
     - build
