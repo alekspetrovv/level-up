@@ -18,6 +18,11 @@ public class BlogController {
         this.blogService = blogService;
     }
 
+    @GetMapping
+    public String hello() {
+        return "Hello";
+    }
+
     @GetMapping("/all")
     public ResponseEntity<List<Blog>> readAll() {
         List<Blog> blogs = blogService.read();
