@@ -9,4 +9,6 @@ public interface BlogRepository extends JpaRepository<Blog, Long> {
     void deleteBlogById(Long id);
 
     Blog getBlogById(Long id);
+
+    Blog getBlogByTitle(String title);
 }

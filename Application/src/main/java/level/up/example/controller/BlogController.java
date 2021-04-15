@@ -26,33 +26,45 @@ public class BlogController {
     @GetMapping("/all")
     public ResponseEntity<List<Blog>> readAll() {
         List<Blog> blogs = blogService.read();
-        return new ResponseEntity<>(blogs, HttpStatus.OK);
+        if (blogs != null) {
+            return ResponseEntity.ok().body(blogs);
+        }
+        return ResponseEntity.notFound().build();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Blog> read(@PathVariable("id") Long id) {
         Blog blog = blogService.get(id);
-        return new ResponseEntity<>(blog, HttpStatus.OK);
+        if (blog != null) {
+            return ResponseEntity.ok().body(blog);
+        }
+        return ResponseEntity.notFound().build();
     }
 
 
     @PostMapping("/add")
     public ResponseEntity<Blog> create(@RequestBody Blog blog) {
         Blog newBlog = blogService.create(blog);
-        return new ResponseEntity<>(newBlog, HttpStatus.CREATED);
+        if (newBlog != null) {
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
 
 
     @PutMapping("/update")
     public ResponseEntity<Blog> update(@RequestBody Blog blog) {
         Blog updateBlog = blogService.update(blog);
-        return new ResponseEntity<>(updateBlog, HttpStatus.CREATED);
+        if (updateBlog != null) {
+            return ResponseEntity.noContent().build();
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Blog> delete(@PathVariable("id") Long id) {
         blogService.delete(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return ResponseEntity.ok().build();
     }
 
 }

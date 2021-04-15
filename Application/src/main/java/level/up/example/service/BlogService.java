@@ -1,6 +1,7 @@
 package level.up.example.service;
 
 import level.up.example.exception.BlogNotFoundException;
+import level.up.example.exception.UserNotFoundException;
 import level.up.example.module.Blog;
 import level.up.example.repository.BlogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class BlogService {
@@ -22,6 +22,10 @@ public class BlogService {
 
 
     public Blog create(Blog blog) {
+        Blog existingBlog = blogRepository.getBlogByTitle(blog.getTitle());
+        if (existingBlog != null) {
+            throw new UserNotFoundException("Blog with title: " + blog.getTitle() + " already exist!");
+        }
         return blogRepository.save(blog);
     }
 
@@ -39,6 +43,9 @@ public class BlogService {
 
     public Blog update(Blog blog) {
         Blog existingBlog = get(blog.getId());
+        if (existingBlog == null) {
+            return null;
+        }
         existingBlog.setTitle(blog.getTitle());
         existingBlog.setBody(blog.getBody());
         return blogRepository.save(blog);
@@ -46,6 +53,10 @@ public class BlogService {
 
     @Transactional
     public void delete(Long id) {
+        Blog existingBlog = get(id);
+        if (existingBlog == null) {
+            return;
+        }
         blogRepository.deleteBlogById(id);
     }
 

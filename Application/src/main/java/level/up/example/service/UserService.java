@@ -21,6 +21,10 @@ public class UserService {
 
 
     public User create(User user) {
+        User existingUser = userRepository.findUserByEmail(user.getEmail());
+        if (existingUser != null) {
+            throw new UserNotFoundException("User with email: " + user.getEmail() + " already exist!");
+        }
         return userRepository.save(user);
     }
 
@@ -30,10 +34,13 @@ public class UserService {
 
     public User update(User user) {
         User existingUser = findUserById(user.getId());
+        if (existingUser == null) {
+            return null;
+        }
         existingUser.setEmail(user.getEmail());
         existingUser.setPassword(user.getPassword());
-        existingUser.setFirst_name(user.getFirst_name());
-        existingUser.setLast_name(user.getLast_name());
+        existingUser.setFirstName(user.getFirstName());
+        existingUser.setLastName(user.getLastName());
         return userRepository.save(existingUser);
     }
 
@@ -49,6 +56,10 @@ public class UserService {
 
     @Transactional
     public void deleteUserById(Long id) {
+        User existingUser = findUserById(id);
+        if (existingUser == null) {
+            return;
+        }
         userRepository.deleteUserById(id);
     }
 

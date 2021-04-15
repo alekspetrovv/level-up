@@ -10,16 +10,18 @@ public class Blog {
     private long id;
     private String title;
     private String body;
-
+    private String img;
 
     public Blog() {
 
     }
 
-    public Blog(String title, String body) {
+    public Blog(String title, String body, String img) {
         this.title = title;
         this.body = body;
+        this.img = img;
     }
+
 
     public long getId() {
         return id;
@@ -33,6 +35,14 @@ public class Blog {
         this.title = title;
     }
 
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
     public String getBody() {
         return body;
     }
@@ -41,13 +51,4 @@ public class Blog {
         this.body = body;
     }
 
-
-    @Override
-    public String toString() {
-        return "Blog{" +
-                "id=" + getId() +
-                ", title='" + getTitle() + '\'' +
-                ", body='" + getBody() + '\'' +
-                '}';
-    }
 }

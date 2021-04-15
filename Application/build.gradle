@@ -2,7 +2,8 @@ plugins {
     id 'org.springframework.boot' version '2.4.3'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
-    id 'org.sonarqube' version '3.0'
+    id "org.sonarqube" version "3.0"
+    id 'jacoco'
 }
 
 group = 'level.up'
@@ -19,6 +20,14 @@ repositories {
     mavenCentral()
 }
 
+jacocoTestReport{
+    reports{
+        xml.enabled true
+        csv.enabled false
+        html.enabled true
+    }
+}
+
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -28,17 +37,22 @@ dependencies {
     runtimeOnly 'mysql:mysql-connector-java'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 }
 
 test {
     useJUnitPlatform()
+    finalizedBy jacocoTestReport
 }
 
 sonarqube {
     properties {
         property "sonar.projectKey", 'level_up'
         property "sonar.host.url", "http://localhost:9000"
-        property "sonar.login", "07ca1844eb5811d5c3f719db66531208fae411fd"
+        property "sonar.login", "0650a10dc3b144675fb24799b52b16692e72dbad"
+        property "sonar.java.coveragePlugin","jacoco"
+        property "sonar.java.reportPaths","build/reports/jacoco/test/jacocoTestReport.xml"
     }
 
 }
