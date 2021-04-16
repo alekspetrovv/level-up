@@ -3,6 +3,7 @@ package level.up.example.service;
 import level.up.example.exception.BlogNotFoundException;
 import level.up.example.exception.UserNotFoundException;
 import level.up.example.module.Blog;
+import level.up.example.module.User;
 import level.up.example.repository.BlogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,16 @@ public class BlogService {
         }
         return blog;
     }
+
+
+    public Blog findBlogById(Long id) {
+        Blog blog = blogRepository.findBlogById(id);
+        if (blog == null) {
+            throw new UserNotFoundException("Blog with id " + id + " was not found!");
+        }
+        return blog;
+    }
+
 
     public Blog update(Blog blog) {
         Blog existingBlog = get(blog.getId());
