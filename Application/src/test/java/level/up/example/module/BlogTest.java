@@ -22,7 +22,7 @@ class BlogTest {
 
     @Test
     void setTitle() {
-        Blog blog = new Blog("league", "test", "test.png");
+        Blog blog = new Blog("league", "test", "test1.png");
         blog.setTitle("apex");
         assertNotNull(blog);
         assertEquals("apex", blog.getTitle());
