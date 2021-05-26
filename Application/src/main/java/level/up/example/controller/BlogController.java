@@ -16,8 +16,8 @@ import java.util.List;
 import java.util.Objects;
 
 @RestController
-@RequestMapping("/blogs")
 @CrossOrigin("*")
+@RequestMapping("/blogs")
 @Validated
 public class BlogController {
 
@@ -46,8 +46,8 @@ public class BlogController {
     }
 
 
-    @PostMapping(value = "")
-    public ResponseEntity<?> create(
+    @PostMapping("")
+    public ResponseEntity<Blog> create(
             @RequestParam("file") MultipartFile multipartFile,
             @NotBlank @RequestParam("title") String title,
             @NotBlank @RequestParam("body") String body
@@ -62,26 +62,37 @@ public class BlogController {
         blog.setImg(fileName);
         Blog newBlog = blogService.create(blog);
 
-        String uploadDir = "img/maps/" + newBlog.getId();
+        String uploadDir = "img/blogs/" + newBlog.getId();
 
         FileUtility.saveFile(uploadDir, fileName, multipartFile);
 
-        return new ResponseEntity<>(newBlog, HttpStatus.CREATED);
+        return new ResponseEntity<Blog>(newBlog, HttpStatus.CREATED);
     }
+
+
 
     @PutMapping("/{id}")
     public ResponseEntity<?> update(
-            @RequestParam(value = "file", required = false) MultipartFile multipartFile,
+            @RequestParam(value = "file",required = false) MultipartFile multipartFile,
             @PathVariable long id,
             @NotBlank @RequestParam("title") String title,
             @NotBlank @RequestParam("body") String body
-    ) {
+    ) throws IOException{
+
 
         Blog blog = blogService.findBlogById(id);
         blog.setTitle(title);
         blog.setBody(body);
 
+        String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+
+        blog.setImg(fileName);
+
         Blog updatedBlog = blogService.update(blog);
+
+        String uploadDir = "img/blogs/" + updatedBlog.getId();
+
+        FileUtility.saveFile(uploadDir,fileName,multipartFile);
 
         return new ResponseEntity<>(updatedBlog, HttpStatus.CREATED);
     }

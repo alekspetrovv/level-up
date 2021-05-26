@@ -1,63 +1,73 @@
 package level.up.example.service;
 
 import level.up.example.exception.UserNotFoundException;
-import level.up.example.module.User;
+import level.up.example.module.ApiUser;
+import level.up.example.module.request.UserRequest;
 import level.up.example.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
 
-    @Autowired
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+
+    public ApiUser readUserByEmail(String email) {
+        return userRepository.findByEmail(email).orElseThrow(EntityNotFoundException::new);
     }
 
-
-    public User create(User user) {
-        User existingUser = userRepository.findUserByEmail(user.getEmail());
-        if (existingUser != null) {
-            throw new UserNotFoundException("User with email: " + user.getEmail() + " already exist!");
+    public void createUser(UserRequest userRequest) {
+        ApiUser u = new ApiUser();
+        Optional<ApiUser> byEmail = userRepository.findByEmail(userRequest.getEmail());
+        if (byEmail.isPresent()) {
+            throw new RuntimeException("User is already registered.Please use different email.");
         }
-        return userRepository.save(user);
+        u.setEmail(userRequest.getEmail());
+        u.setPassword(passwordEncoder.encode(userRequest.getPassword()));
+        u.setFirstName(userRequest.getFirstName());
+        u.setLastName(userRequest.getLastName());
+        userRepository.save(u);
     }
 
-    public List<User> read() {
+    public List<ApiUser> read() {
         return userRepository.findAll();
     }
 
-    public User update(User user) {
-        User existingUser = findUserById(user.getId());
-        if (existingUser == null) {
+    public ApiUser update(ApiUser apiUser) {
+        ApiUser existingApiUser = findUserById(apiUser.getId());
+        if (existingApiUser == null) {
             return null;
         }
-        existingUser.setEmail(user.getEmail());
-        existingUser.setPassword(user.getPassword());
-        existingUser.setFirstName(user.getFirstName());
-        existingUser.setLastName(user.getLastName());
-        return userRepository.save(existingUser);
+        existingApiUser.setEmail(apiUser.getEmail());
+        existingApiUser.setPassword(apiUser.getPassword());
+        existingApiUser.setFirstName(apiUser.getFirstName());
+        existingApiUser.setLastName(apiUser.getLastName());
+        return userRepository.save(existingApiUser);
     }
 
 
-    public User findUserById(Long id) {
-        User user = userRepository.findUserById(id);
-        if (user == null) {
+    public ApiUser findUserById(Long id) {
+        ApiUser apiUser = userRepository.findUserById(id);
+        if (apiUser == null) {
             throw new UserNotFoundException("User with id " + id + " was not found!");
         }
-        return user;
+        return apiUser;
     }
 
 
     @Transactional
     public void deleteUserById(Long id) {
-        User existingUser = findUserById(id);
-        if (existingUser == null) {
+        ApiUser existingApiUser = findUserById(id);
+        if (existingApiUser == null) {
             return;
         }
         userRepository.deleteUserById(id);

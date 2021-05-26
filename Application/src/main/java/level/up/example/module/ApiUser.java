@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "user")
 @NoArgsConstructor
-public class User {
+public class ApiUser{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,10 +24,10 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-//    public User(String email, String password, String firstName, String lastName) {
-//        this.email = email;
-//        this.password = password;
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//    }
+    public ApiUser(String email, String password, String firstName, String lastName) {
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 }

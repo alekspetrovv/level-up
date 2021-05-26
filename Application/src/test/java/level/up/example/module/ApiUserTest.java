@@ -4,93 +4,93 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class UserTest {
+class ApiUserTest {
 
     @Test
     void getEmail() {
         String email = "email";
-        User user = new User("email", "test", "test", "test");
-        assertNotNull(user);
-        assertEquals(email, user.getEmail());
+        ApiUser apiUser = new ApiUser("email", "test", "test", "test");
+        assertNotNull(apiUser);
+        assertEquals(email, apiUser.getEmail());
     }
 
     @Test
     void setEmail() {
-        User user = new User("email", "test", "test", "test");
-        user.setEmail("email2");
-        assertNotNull(user);
-        assertEquals("email2", user.getEmail());
+        ApiUser apiUser = new ApiUser("email", "test", "test", "test");
+        apiUser.setEmail("email2");
+        assertNotNull(apiUser);
+        assertEquals("email2", apiUser.getEmail());
     }
 
     @Test
     void getId() {
         long id = 1;
-        User user = new User();
-        user.setId(id);
-        assertEquals(id, user.getId());
+        ApiUser apiUser = new ApiUser();
+        apiUser.setId(id);
+        assertEquals(id, apiUser.getId());
     }
 
     @Test
     void createUser() {
-        new User();
+        new ApiUser();
     }
 
     @Test
     void setId() {
         long id = 1;
-        User user = new User();
-        user.setId(id);
-        assertEquals(id, user.getId());
+        ApiUser apiUser = new ApiUser();
+        apiUser.setId(id);
+        assertEquals(id, apiUser.getId());
     }
 
     @Test
     void getPassword() {
         String password = "password";
-        User user = new User("email", "password", "test", "test");
-        assertNotNull(user);
-        assertEquals(password, user.getPassword());
+        ApiUser apiUser = new ApiUser("email", "password", "test", "test");
+        assertNotNull(apiUser);
+        assertEquals(password, apiUser.getPassword());
 
     }
 
     @Test
     void setPassword() {
-        User user = new User("email", "test", "test", "test");
-        user.setPassword("password");
-        assertNotNull(user);
-        assertEquals("password", user.getPassword());
+        ApiUser apiUser = new ApiUser("email", "test", "test", "test");
+        apiUser.setPassword("password");
+        assertNotNull(apiUser);
+        assertEquals("password", apiUser.getPassword());
     }
 
     @Test
     void getFirstName() {
         String firstName = "alex";
-        User user = new User("email", "test", "alex", "test");
-        assertNotNull(user);
-        assertEquals(firstName, user.getFirstName());
+        ApiUser apiUser = new ApiUser("email", "test", "alex", "test");
+        assertNotNull(apiUser);
+        assertEquals(firstName, apiUser.getFirstName());
     }
 
     @Test
     void setFirstName() {
-        User user = new User("email", "test", "alex", "test");
-        user.setFirstName("george");
-        assertNotNull(user);
-        assertEquals("george", user.getFirstName());
+        ApiUser apiUser = new ApiUser("email", "test", "alex", "test");
+        apiUser.setFirstName("george");
+        assertNotNull(apiUser);
+        assertEquals("george", apiUser.getFirstName());
     }
 
     @Test
     void getLastName() {
         String secondName = "petrov";
-        User user = new User("email", "test", "alex", "petrov");
-        assertNotNull(user);
-        assertEquals(secondName, user.getLastName());
+        ApiUser apiUser = new ApiUser("email", "test", "alex", "petrov");
+        assertNotNull(apiUser);
+        assertEquals(secondName, apiUser.getLastName());
 
     }
 
     @Test
     void setLastName() {
-        User user = new User("email", "test", "alex", "test");
-        user.setLastName("petrov");
-        assertNotNull(user);
-        assertEquals("petrov", user.getLastName());
+        ApiUser apiUser = new ApiUser("email", "test", "alex", "test");
+        apiUser.setLastName("petrov");
+        assertNotNull(apiUser);
+        assertEquals("petrov", apiUser.getLastName());
 
     }
 }

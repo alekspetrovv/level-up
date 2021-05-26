@@ -3,7 +3,6 @@ package level.up.example.service;
 import level.up.example.exception.BlogNotFoundException;
 import level.up.example.exception.UserNotFoundException;
 import level.up.example.module.Blog;
-import level.up.example.module.User;
 import level.up.example.repository.BlogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
