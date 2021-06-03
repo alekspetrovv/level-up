@@ -1,5 +1,6 @@
 package level.up.example.config;
 
+
 public class AuthenticationConfigConstants {
     public static final String SECRET = "Java_to_Dev_Secret";
     public static final long EXPIRATION_TIME = 864000000; // 10 days

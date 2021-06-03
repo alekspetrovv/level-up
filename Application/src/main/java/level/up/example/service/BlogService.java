@@ -3,11 +3,15 @@ package level.up.example.service;
 import level.up.example.exception.BlogNotFoundException;
 import level.up.example.exception.UserNotFoundException;
 import level.up.example.module.Blog;
+import level.up.example.module.FileUtility;
 import level.up.example.repository.BlogRepository;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -45,28 +49,23 @@ public class BlogService {
     public Blog findBlogById(Long id) {
         Blog blog = blogRepository.findBlogById(id);
         if (blog == null) {
-            throw new UserNotFoundException("Blog with id " + id + " was not found!");
+            throw new BlogNotFoundException("Blog with id " + id + " was not found!");
         }
         return blog;
     }
 
 
     public Blog update(Blog blog) {
-        Blog existingBlog = get(blog.getId());
-        if (existingBlog == null) {
-            return null;
-        }
-        existingBlog.setTitle(blog.getTitle());
-        existingBlog.setBody(blog.getBody());
         return blogRepository.save(blog);
     }
 
     @Transactional
-    public void delete(Long id) {
+    public void delete(Long id) throws IOException {
         Blog existingBlog = get(id);
         if (existingBlog == null) {
             return;
         }
+        FileUtils.deleteDirectory(new File("src/main/resources/img/blogs/" + id));
         blogRepository.deleteBlogById(id);
     }
 

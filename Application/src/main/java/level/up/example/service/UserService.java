@@ -43,15 +43,7 @@ public class UserService {
     }
 
     public ApiUser update(ApiUser apiUser) {
-        ApiUser existingApiUser = findUserById(apiUser.getId());
-        if (existingApiUser == null) {
-            return null;
-        }
-        existingApiUser.setEmail(apiUser.getEmail());
-        existingApiUser.setPassword(apiUser.getPassword());
-        existingApiUser.setFirstName(apiUser.getFirstName());
-        existingApiUser.setLastName(apiUser.getLastName());
-        return userRepository.save(existingApiUser);
+        return userRepository.save(apiUser);
     }
 
 

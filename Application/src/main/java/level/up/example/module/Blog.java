@@ -19,10 +19,19 @@ public class Blog {
     private String body;
     private String img;
 
-    public Blog(String title, String body, String img) {
+    @ManyToOne
+    @JoinColumn(name = "api_user_id", nullable = false)
+    private ApiUser api_user;
+
+    public Blog(String title, String body, String img, ApiUser user) {
         this.title = title;
         this.body = body;
         this.img = img;
+        this.api_user = user;
     }
 
+
+    public String getImg() {
+        return "/img/blogs/" + this.id + "/" + this.img;
+    }
 }

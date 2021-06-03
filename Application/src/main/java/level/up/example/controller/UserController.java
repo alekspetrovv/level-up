@@ -13,7 +13,8 @@ import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/user")
+//TODO later change the config file sign up to this url
+@RequestMapping(value = "/users")
 @Validated
 @RequiredArgsConstructor
 public class UserController {
@@ -35,6 +36,15 @@ public class UserController {
         ApiUser apiUser = userService.findUserById(id);
         if (apiUser != null) {
             return ResponseEntity.ok().body(apiUser);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/{id}/blogs")
+    public ResponseEntity<?> getUserBlogs(@PathVariable("id") Long id) {
+        ApiUser apiUser = userService.findUserById(id);
+        if (apiUser != null) {
+            return ResponseEntity.ok().body(apiUser.getBlogList());
         }
         return ResponseEntity.notFound().build();
     }

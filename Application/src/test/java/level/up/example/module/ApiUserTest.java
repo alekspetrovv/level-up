@@ -2,6 +2,9 @@ package level.up.example.module;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ApiUserTest {
@@ -68,6 +71,7 @@ class ApiUserTest {
         assertEquals(firstName, apiUser.getFirstName());
     }
 
+
     @Test
     void setFirstName() {
         ApiUser apiUser = new ApiUser("email", "test", "alex", "test");
@@ -92,5 +96,27 @@ class ApiUserTest {
         assertNotNull(apiUser);
         assertEquals("petrov", apiUser.getLastName());
 
+    }
+
+    @Test
+    void setBlogList() {
+        ApiUser apiUser = new ApiUser("email", "test", "alex", "test");
+        Blog b = new Blog("test", "test", "test", apiUser);
+        List<Blog> blogsList = new ArrayList<>();
+        blogsList.add(b);
+        apiUser.setBlogList(blogsList);
+        assertNotNull(apiUser);
+        assertEquals(1, apiUser.getBlogList().stream().count());
+    }
+
+    @Test
+    void getBlogList() {
+        ApiUser apiUser = new ApiUser("email", "test", "alex", "test");
+        Blog b = new Blog("test", "test", "test", apiUser);
+        List<Blog> blogsList = new ArrayList<>();
+        blogsList.add(b);
+        apiUser.setBlogList(blogsList);
+        assertNotNull(apiUser);
+        assertEquals(1, apiUser.getBlogList().stream().count());
     }
 }
