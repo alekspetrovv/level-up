@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import BlogService from '../services/BlogServices';
 import Nav from "./HeaderComponent";
-import { Button } from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import background from "../background.png"
 
 class ListBlogsComponent extends Component {
@@ -19,7 +19,7 @@ class ListBlogsComponent extends Component {
 
     componentDidMount() {
         BlogService.getBlogs().then((res) => {
-            this.setState({ blogs: res.data });
+            this.setState({blogs: res.data});
         });
     }
 
@@ -36,7 +36,7 @@ class ListBlogsComponent extends Component {
 
         if (r === true) {
             BlogService.deleteBlog(id).then(res => {
-                this.setState({ blogs: this.state.blogs.filter(blog => blog.id !== id) });
+                this.setState({blogs: this.state.blogs.filter(blog => blog.id !== id)});
             });
         }
     }
@@ -46,11 +46,12 @@ class ListBlogsComponent extends Component {
             <div className="blogs" style={{
                 backgroundImage: `url(${background})`
             }}>
-                <Nav />
+                <Nav/>
                 <div className="container blog-container">
                     <div className="post-actions">
                         <h2 className="add_post_text">Gaming Articles</h2>
-                        <Button onClick={this.addBlog} className="btn-add-blog" variant="primary" size="lg" type="submit">
+                        <Button onClick={this.addBlog} className="btn-add-blog" variant="primary" size="lg"
+                                type="submit">
                             Create Blog
                         </Button>
                     </div>
@@ -58,7 +59,7 @@ class ListBlogsComponent extends Component {
                         blog =>
                             <div key={blog.id}>
                                 <div className="posts">
-                                    <div className="blog-item" style={{ position: 'relative' }}>
+                                    <div className="blog-item" style={{position: 'relative'}}>
                                         <div className="blog__item__preview">
                                             <h3 className="blog_title">
                                                 {blog.title}
@@ -66,16 +67,20 @@ class ListBlogsComponent extends Component {
                                             <p className="blog_content">
                                                 {blog.body}
                                             </p>
-                                        </div>  
+                                        </div>
                                         {/* <div className="blog__item__img">
-                                            <img src={this.state.img} className="blog-image">   
+                                            <img src={this.state.img} className="blog-image">
                                             </img>
                                         </div> */}
                                         <div className="btn-actions">
-                                        <div className="text-center">
-                                            <button type="button" onClick={() => this.updateBlog(blog.id)} className="btn btn-warning">View/Update</button>
-                                            <button type="button" className="btn btn-danger" onClick={() => this.deleteBlog(blog.id)}>Delete</button>
-                                        </div>
+                                            <div className="text-center">
+                                                <button type="button" onClick={() => this.updateBlog(blog.id)}
+                                                        className="btn btn-warning">View/Update
+                                                </button>
+                                                <button type="button" className="btn btn-danger"
+                                                        onClick={() => this.deleteBlog(blog.id)}>Delete
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

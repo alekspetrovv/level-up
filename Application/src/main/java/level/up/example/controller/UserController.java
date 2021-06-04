@@ -16,6 +16,7 @@ import java.util.List;
 //TODO later change the config file sign up to this url
 @RequestMapping(value = "/users")
 @Validated
+@CrossOrigin("*")
 @RequiredArgsConstructor
 public class UserController {
 
