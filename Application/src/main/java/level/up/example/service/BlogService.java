@@ -28,7 +28,7 @@ public class BlogService {
     public Blog create(Blog blog) {
         Blog existingBlog = blogRepository.getBlogByTitle(blog.getTitle());
         if (existingBlog != null) {
-            throw new UserNotFoundException("Blog with title: " + blog.getTitle() + " already exist!");
+            throw new UserNotFoundException("Blog with title: " + blog.getTitle() + " already exist! ");
         }
         return blogRepository.save(blog);
     }
