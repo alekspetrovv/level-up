@@ -1,6 +1,7 @@
 package level.up.example.module;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import level.up.example.config.AuthenticationConfigConstants;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,7 +16,7 @@ import java.util.List;
 @Entity
 @Table(name = "api_user")
 @NoArgsConstructor
-public class ApiUser implements Serializable {
+public class ApiUser extends AuthenticationConfigConstants implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
