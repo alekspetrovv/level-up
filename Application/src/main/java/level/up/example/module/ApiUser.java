@@ -16,7 +16,7 @@ import java.util.List;
 @Entity
 @Table(name = "api_user")
 @NoArgsConstructor
-public class ApiUser extends AuthenticationConfigConstants implements Serializable {
+public class ApiUser implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
