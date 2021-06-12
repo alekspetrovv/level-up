@@ -1,0 +1,89 @@
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+.logo-nav {
+  margin-left: auto;
+  height: 50px;
+  width: 80px;
+}
+
+.home-page {
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.post-actions {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  flex-wrap: wrap;
+  color: white;
+}
+
+.navbar-expand {
+  font-weight: 500;
+}
+
+.card-container.card {
+  max-width: 350px !important;
+  padding: 40px 40px;
+}
+
+.jumbotron-color{
+color:#f7f7f7;
+}
+.card {
+  background-color: #f7f7f7;
+  padding: 20px 25px 30px;
+  margin: 0 auto 25px;
+  margin-top: 50px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.blog-form {
+  background-color: #f7f7f7;
+  border-radius: 20px;
+  height: 460px;
+  padding-top: 15px;
+}
+
+
+.btn-actions {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
+.jumbotron {
+  margin-top: 15px;
+  border-radius: 0.5rem;
+  padding: 2rem 2rem;
+  background-color: #007bff!important;
+  color: white;
+}
+
+.profile-img-card {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 10px;
+  display: block;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.post-actions {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  flex-wrap: wrap;
+}

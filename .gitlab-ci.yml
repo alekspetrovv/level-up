@@ -1,24 +1,13 @@
 stages:
   - build
   - test
-  - sonarqube
 build:
   stage: build
   script:
-    - cd Application
-    - ./gradlew assemble
+    - cd backend
+    - ./mvn compile
 test:
   stage: test
   script:
-    - cd Application
-    - ./gradlew test
-  dependencies:
-    - build
-sonarqube:
-  stage: sonarqube
-  script:
-    - cd Application
-    - ./gradlew sonarqube
-  dependencies:
-    - test
-
+    - cd backend
+    - ./mvn clean test
