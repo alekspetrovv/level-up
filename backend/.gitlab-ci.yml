@@ -8,3 +8,8 @@ test:
   stage: test
   script:
     - mvn test
+
+sonarqube:
+  stage: test
+  script:
+    - mvn sonar:sonar
