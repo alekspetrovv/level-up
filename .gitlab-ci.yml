@@ -4,10 +4,12 @@ stages:
 build:
   stage: build
   script:
+    - cd backend
     - ./mvn compile
 test:
   stage: test
   script:
+    - cd backend
     - ./mvn test
   dependencies:
     - build
