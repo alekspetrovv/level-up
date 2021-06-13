@@ -30,6 +30,7 @@
 		<sonar.host.url>http://localhost:9000</sonar.host.url>
 		<sonar.projectKey>levelup</sonar.projectKey>
 		<sonar.login>d07fadbf884bc8089fd46464801baeba351a0ee0</sonar.login>
+		<sonar.sources>src/main/java</sonar.sources>
 	</properties>
 
 
