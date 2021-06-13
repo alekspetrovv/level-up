@@ -4,11 +4,11 @@ stages:
 build:
   stage: build
   script:
-    - ./mvnw compile
+    - ./mvn compile
 test:
   stage: test
   script:
-    - ./mvnw test
+    - ./mvn test
   dependencies:
     - build
 
