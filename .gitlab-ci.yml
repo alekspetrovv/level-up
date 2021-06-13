@@ -15,4 +15,4 @@ sonarqube:
   stage: test
   script:
     - cd backend
-    - mvn sonar:sonar
+    - mvn clean deploy sonar:sonar

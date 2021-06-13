@@ -12,4 +12,4 @@ test:
 sonarqube:
   stage: test
   script:
-    - mvn sonar:sonar
+    - mvn clean deploy sonar:sonar
