@@ -35,7 +35,7 @@ class UpdateBlogComponent extends Component {
     event.preventDefault();
     let blog = { title: this.state.title, body: this.state.body, img: this.state.img };
     BlogService.updateBlog(blog, this.state.id).then(res => {
-      this.props.history.push('/blogs');
+      this.props.history.push('/admin/blogs');  
     });
   }
 

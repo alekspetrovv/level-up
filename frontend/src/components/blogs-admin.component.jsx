@@ -39,7 +39,10 @@ class BlogsAdmin extends Component {
   }
 
 
+
+
   deleteArticle(id) {
+   
     const r = (window.confirm('Are you sure you want to delete this item?'));
     if (r === true) {
       BlogService.deleteBlog(id).then(res => {
@@ -69,10 +72,10 @@ class BlogsAdmin extends Component {
                 <div className="blog-item" style={{ position: 'relative' }}>
                   <div className="blog__item__preview">
                     <div className="btn-actions">
-                      <button onClick={this.updateArticle} type="button"
+                      <button onClick={()=>{this.updateArticle(blog.id)}} type="button"
                         className="btn btn-warning mr-1">View/Update
                       </button>
-                      <button onClick={this.deleteArticle} type="button" className="btn btn-danger"
+                      <button onClick={()=>{ this.deleteArticle(blog.id)} } type="button" className="btn btn-danger"
                       >Delete
                       </button>
                     </div>
@@ -82,8 +85,8 @@ class BlogsAdmin extends Component {
                     <p className="text-center">
                       {blog.body}
                     </p>
-                    {/* <img src={"http://localhost:8080" + blog.img}>
-                    </img> */}
+                    <img src={"http://localhost:8080" + blog.img}>
+                    </img>
                   </div>
                 </div>
               </header>

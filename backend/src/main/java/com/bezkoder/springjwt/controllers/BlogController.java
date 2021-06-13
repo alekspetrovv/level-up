@@ -3,7 +3,6 @@ package com.bezkoder.springjwt.controllers;
 import com.bezkoder.springjwt.models.Blog;
 import com.bezkoder.springjwt.models.FileUtility;
 import com.bezkoder.springjwt.security.services.BlogService;
-import lombok.NoArgsConstructor;
 import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

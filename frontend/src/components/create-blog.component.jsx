@@ -46,7 +46,7 @@ class CreateBlogComponent extends Component {
       });
     } else {
       BlogService.updateBlog(blog, this.state.id).then(res => {
-        this.props.history.push('/blogs');
+        this.props.history.push('/admin/blogs');
       });
     }
   }
