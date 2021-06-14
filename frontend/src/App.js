@@ -103,7 +103,7 @@ class App extends Component {
 
         <div className="container mt-5">
           <Switch>
-            <Route exact path="/" component={Login} />
+          <Route exact path="/" component={Login}/>
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Profile} />

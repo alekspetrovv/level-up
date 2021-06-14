@@ -15,9 +15,16 @@ class BlogTest {
     }
 
     @Test
+    void createBlog(){
+        new Blog();
+    }
+
+    @Test
     void getId() {
         long id = 1;
-        assertEquals(1, id);
+        Blog blog = new Blog();
+        blog.setId(id);
+        assertEquals(id, blog.getId());
     }
 
     @Test
@@ -39,7 +46,9 @@ class BlogTest {
     @Test
     void setId() {
         long id = 1;
-        assertEquals(1, id);
+        Blog blog = new Blog();
+        blog.setId(id);
+        assertEquals(id, blog.getId());
     }
 
     @Test

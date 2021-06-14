@@ -21,12 +21,6 @@ public class UserController {
 		return "User Content.";
 	}
 
-	@GetMapping("/mod")
-	@PreAuthorize("hasRole('MODERATOR')")
-	public String moderatorAccess() {
-		return "Moderator Board.";
-	}
-
 	@GetMapping("/admin/blogs")
 	@PreAuthorize("hasRole('ADMIN')")
 	public String adminAccess() {

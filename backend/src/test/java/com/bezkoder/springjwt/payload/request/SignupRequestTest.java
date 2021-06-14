@@ -5,6 +5,7 @@ import com.bezkoder.springjwt.models.Role;
 import com.bezkoder.springjwt.models.User;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -66,20 +67,20 @@ class SignupRequestTest {
     }
 
     @Test
-    void getRole() {
-        String password = "test";
-        SignupRequest signUpRequest = new SignupRequest();
-        signUpRequest.setPassword(password);
-        assertNotNull(signUpRequest);
-        assertEquals(password, signUpRequest.getPassword());
+    void getRoles() {
+        Set<String> roles = new HashSet<>();
+        SignupRequest signupRequest = new SignupRequest();
+        signupRequest.setRole(roles);
+        assertNotNull(signupRequest);
+        assertEquals(roles, signupRequest.getRole());
     }
 
     @Test
-    void setRole() {
-        String password = "test";
-        SignupRequest signUpRequest = new SignupRequest();
-        signUpRequest.setPassword(password);
-        assertNotNull(signUpRequest);
-        assertEquals(password, signUpRequest.getPassword());
+    void setRoles() {
+        Set<String> roles = new HashSet<>();
+        SignupRequest signupRequest = new SignupRequest();
+        signupRequest.setRole(roles);
+        assertNotNull(signupRequest);
+        assertEquals(roles, signupRequest.getRole());
     }
 }

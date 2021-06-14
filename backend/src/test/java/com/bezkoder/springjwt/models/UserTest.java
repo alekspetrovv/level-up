@@ -2,6 +2,9 @@ package com.bezkoder.springjwt.models;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
@@ -9,13 +12,22 @@ class UserTest {
     @Test
     void getId() {
         long id = 1;
-        assertEquals(1, id);
+        User user = new User();
+        user.setId(id);
+        assertEquals(id, (long) user.getId());
+    }
+
+    @Test
+    void createUser() {
+        new User();
     }
 
     @Test
     void setId() {
         long id = 1;
-        assertEquals(1, id);
+        User user = new User();
+        user.setId(id);
+        assertEquals(id, (long) user.getId());
     }
 
     @Test
@@ -29,9 +41,9 @@ class UserTest {
     @Test
     void setUsername() {
         User apiUser = new User("email", "test", "test");
-        apiUser.setEmail("test");
+        apiUser.setUsername("test");
         assertNotNull(apiUser);
-        assertEquals("test", apiUser.getEmail());
+        assertEquals("test", apiUser.getUsername());
     }
 
     @Test
@@ -67,17 +79,27 @@ class UserTest {
 
     @Test
     void getRoles() {
+        ERole erole = ERole.ROLE_USER;
+        Role role = new Role(erole);
+        Set<Role> roles = new HashSet<>();
+        roles.add(role);
         User apiUser = new User("email", "test", "test");
         apiUser.setPassword("password");
+        apiUser.setRoles(roles);
         assertNotNull(apiUser);
-        assertEquals("password", apiUser.getPassword());
+        assertEquals(roles, apiUser.getRoles());
     }
 
     @Test
     void setRoles() {
+        ERole erole = ERole.ROLE_USER;
+        Role role = new Role(erole);
+        Set<Role> roles = new HashSet<>();
+        roles.add(role);
         User apiUser = new User("email", "test", "test");
         apiUser.setPassword("password");
+        apiUser.setRoles(roles);
         assertNotNull(apiUser);
-        assertEquals("password", apiUser.getPassword());
+        assertEquals(roles, apiUser.getRoles());
     }
 }

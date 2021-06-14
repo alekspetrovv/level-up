@@ -8,14 +8,18 @@ class RoleTest {
 
     @Test
     void getId() {
-        long id = 1;
-        assertEquals(1, id);
+        Integer id = 1;
+        Role role = new Role();
+        role.setId(id);
+        assertEquals(id, role.getId());
     }
 
     @Test
     void setId() {
-        long id = 1;
-        assertEquals(1, id);
+        Integer id = 1;
+        Role role = new Role();
+        role.setId(id);
+        assertEquals(id, role.getId());
     }
 
     @Test
