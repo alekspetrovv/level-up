@@ -1,0 +1,4 @@
+mvn clean  -Dmaven.clean.failOnError=false
+mvn clean deploy sonar:sonar
+mvn sonar:sonar
+mvn clean
