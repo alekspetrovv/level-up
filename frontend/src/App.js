@@ -48,7 +48,7 @@ class App extends Component {
         backgroundImage: `url(${background})`
       }}>
         <nav className="navbar navbar-expand navbar-dark bg-primary">
-          <Link className="navbar-brand">
+          <Link to={"/login"} className="navbar-brand">
             <img className="logo-nav" src={logo} alt="logo"></img>
           </Link>
           <div className="navbar-nav mr-auto">

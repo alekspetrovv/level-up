@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
+import { Card  } from "react-bootstrap";
 import AuthService from "../services/auth.service";
 import BlogService from "../services/blog.service";
 class BlogsUser extends Component {
@@ -43,8 +44,9 @@ class BlogsUser extends Component {
                     <p className="text-center">
                       {blog.body}
                     </p>
-                    {/* <img src={"http://localhost:8080" + blog.img}>
-                    </img> */}
+                    <Card style={{ width: '12rem' }}>
+                      <Card.Img variant="top" src={"http://localhost:8080" + blog.img} />
+                    </Card>
                   </div>
                 </div>
               </header>

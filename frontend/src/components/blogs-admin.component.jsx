@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button } from "react-bootstrap";
+import { Button,Card  } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
 import AuthService from "../services/auth.service";
 import BlogService from "../services/blog.service";
@@ -42,7 +42,7 @@ class BlogsAdmin extends Component {
 
 
   deleteArticle(id) {
-   
+
     const r = (window.confirm('Are you sure you want to delete this item?'));
     if (r === true) {
       BlogService.deleteBlog(id).then(res => {
@@ -72,10 +72,10 @@ class BlogsAdmin extends Component {
                 <div className="blog-item" style={{ position: 'relative' }}>
                   <div className="blog__item__preview">
                     <div className="btn-actions">
-                      <button onClick={()=>{this.updateArticle(blog.id)}} type="button"
+                      <button onClick={() => { this.updateArticle(blog.id) }} type="button"
                         className="btn btn-warning mr-1">View/Update
                       </button>
-                      <button onClick={()=>{ this.deleteArticle(blog.id)} } type="button" className="btn btn-danger"
+                      <button onClick={() => { this.deleteArticle(blog.id) }} type="button" className="btn btn-danger"
                       >Delete
                       </button>
                     </div>
@@ -85,9 +85,11 @@ class BlogsAdmin extends Component {
                     <p className="text-center">
                       {blog.body}
                     </p>
-                    <img src={"http://localhost:8080" + blog.img}>
-                    </img>
+                    <Card style={{ width: '12rem' }}>
+                      <Card.Img variant="top" src={"http://localhost:8080" + blog.img} />
+                    </Card>
                   </div>
+
                 </div>
               </header>
             </div>

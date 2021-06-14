@@ -25,7 +25,7 @@ public class ImageController {
 
         var imgFile = new ClassPathResource("img/" + resource + "/" + id + "/" + img_name);
 
-        response.setContentType(MediaType.IMAGE_JPEG_VALUE);
+        response.setContentType(MediaType.ALL_VALUE);
         StreamUtils.copy(imgFile.getInputStream(), response.getOutputStream());
     }
 }
