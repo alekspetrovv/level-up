@@ -11,3 +11,8 @@ test:
     - cd backend
     - mvn test
 
+sonarqube:
+  stage: test
+  script:
+    - cd backend
+    - mvn sonar:sonar
