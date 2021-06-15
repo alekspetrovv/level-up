@@ -12,7 +12,7 @@ test:
     - mvn test
 
 sonarqube:
-  stage: test
+  stage: sonarqube
   script:
     - cd backend
     - mvn clean deploy sonar:sonar
