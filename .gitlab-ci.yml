@@ -1,10 +1,12 @@
-
+stages:
+  - build
+  - test
+  - sonarqube
 build:
   stage: build
   script:
     - cd backend
     - mvn compile
-
 test:
   stage: test
   script:
@@ -12,8 +14,7 @@ test:
     - mvn test
 
 sonarqube:
-  stage: sonarqube
+  stage: test
   script:
     - cd backend
     - mvn clean deploy sonar:sonar
-
