@@ -58,7 +58,7 @@ class BlogsAdmin extends Component {
       return <Redirect to={this.state.redirect} />
     }
     return (
-      <div className="container">
+      <div className="container  ">
         <div className="post-actions">
           <h2 className="add_post_text">Gaming Articles</h2>
           <Button onClick={this.createArticle} className="btn-add-blog ml-auto" variant="primary" size="lg" type="submit">

@@ -44,9 +44,7 @@ class App extends Component {
     const { currentUser, showAdminBoard, showUserBoard } = this.state;
 
     return (
-      <div className="home-page" style={{
-        backgroundImage: `url(${background})`
-      }}>
+      <div>
         <nav className="navbar navbar-expand navbar-dark bg-primary">
           <Link to={"/login"} className="navbar-brand">
             <img className="logo-nav" src={logo} alt="logo"></img>
@@ -101,7 +99,7 @@ class App extends Component {
           )}
         </nav>
 
-        <div className="container mt-5">
+        <div className="container mt-5" >
           <Switch>
           <Route exact path="/" component={Login}/>
             <Route exact path="/login" component={Login} />
