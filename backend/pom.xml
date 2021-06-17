@@ -1,214 +1,219 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.8.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
-	</parent>
-	<groupId>com.bezkoder</groupId>
-	<artifactId>spring-boot-security-jwt</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-boot-security-jwt</name>
-	<description>Demo project for Spring Boot Security - JWT</description>
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.4.3</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.bezkoder</groupId>
+    <artifactId>spring-boot-security-jwt</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>spring-boot-security-jwt</name>
+    <description>Demo project for Spring Boot Security - JWT</description>
 
-	<distributionManagement>
-		<repository>
-			<id>internal.repo</id>
-			<name>Internal repo</name>
-			<url>file:///home/thara/testesb/in</url>
-		</repository>
-	</distributionManagement>
+    <distributionManagement>
+        <repository>
+            <id>internal.repo</id>
+            <name>Internal repo</name>
+            <url>file:///home/thara/testesb/in</url>
+        </repository>
+    </distributionManagement>
 
-	<properties>
-		<java.version>1.8</java.version>
-<!--		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+    <properties>
+        <java.version>1.8</java.version>
+        <!--		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
 
-		<jacoco.version>0.8.3</jacoco.version>
-		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-		<sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
-		<sonar.language>java</sonar.language>
+        <jacoco.version>0.8.3</jacoco.version>
+        <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+        <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
+        <sonar.language>java</sonar.language>
 
-		<sonar.host.url>http://localhost:9000</sonar.host.url>
-		<sonar.projectKey>levelup</sonar.projectKey>
-		<sonar.login>d07fadbf884bc8089fd46464801baeba351a0ee0</sonar.login>
-	</properties>
+        <sonar.host.url>http://localhost:9000</sonar.host.url>
+        <sonar.projectKey>levelup</sonar.projectKey>
+        <sonar.login>d07fadbf884bc8089fd46464801baeba351a0ee0</sonar.login>
+        <sonar.exclusions>
+            **/Jwt*.java,
+            **/*Controller.java,
+            **/Auth*.java,
+            **/File*.java,
+            **/Web*.java
+        </sonar.exclusions>
 
-
-
-
-
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.13</version>
-			<scope>test</scope>
-		</dependency>
+    </properties>
 
 
-		<dependency>
-			<groupId>io.appium</groupId>
-			<artifactId>java-client</artifactId>
-			<version>7.3.0</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>commons-collections</artifactId>
-					<groupId>commons-collections</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>okio</artifactId>
-					<groupId>com.squareup.okio</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>commons-logging</artifactId>
-					<groupId>commons-logging</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
-		<dependency>
-			<groupId>io.github.bonigarcia</groupId>
-			<artifactId>webdrivermanager</artifactId>
-			<version>4.2.0</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>commons-io</artifactId>
-					<groupId>commons-io</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-
-			<dependency>
-				<groupId>org.junit.jupiter</groupId>
-				<artifactId>junit-jupiter-engine</artifactId>
-				</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-core</artifactId>
-			<version>${spring-security.version}</version>
-		</dependency>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13</version>
+            <scope>test</scope>
+        </dependency>
 
 
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>7.3.0</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-collections</artifactId>
+                    <groupId>commons-collections</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>okio</artifactId>
+                    <groupId>com.squareup.okio</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>4.2.0</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-io</artifactId>
+                    <groupId>commons-io</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
 
 
-		<dependency>
-			<groupId>org.assertj</groupId>
-			<artifactId>assertj-core</artifactId>
-			<version>3.18.1</version>
-			<scope>test</scope>
-		</dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.18.1</version>
+            <scope>test</scope>
+        </dependency>
 
 
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>asm</artifactId>
+                    <groupId>org.ow2.asm</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>assertj-core</artifactId>
+                    <groupId>org.assertj</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>junit</artifactId>
+                    <groupId>junit</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
 
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>io.jsonwebtoken</groupId>
-			<artifactId>jjwt</artifactId>
-			<version>0.9.1</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<artifactId>asm</artifactId>
-					<groupId>org.ow2.asm</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>assertj-core</artifactId>
-					<groupId>org.assertj</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>junit</artifactId>
-					<groupId>junit</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
-
-
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-test</artifactId>
-			<scope>test</scope>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>2.0.1.Final</version>
+        </dependency>
     </dependencies>
 
-	<build>
-		<plugins>
-				<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>2.12</version>
-			</plugin>
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>${jacoco.version}</version>
-				<configuration>
-					<destFile>${basedir}/target/coverage-reports/jacoco-unit.exec</destFile>
-					<dataFile>${basedir}/target/coverage-reports/jacoco-unit.exec</dataFile>
-					<output>file</output>
-					<append>true</append>
-					<excludes>
-						<exclude>*MethodAccess</exclude>
-					</excludes>
-				</configuration>
-				<executions>
-					<execution>
-						<id>jacoco-initialize</id>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-						<phase>test-compile</phase>
-					</execution>
-					<execution>
-						<id>jacoco-site</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>report</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.12</version>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <configuration>
+                    <destFile>${basedir}/target/coverage-reports/jacoco-unit.exec</destFile>
+                    <dataFile>${basedir}/target/coverage-reports/jacoco-unit.exec</dataFile>
+                    <output>file</output>
+                    <append>true</append>
+                    <excludes>
+                        <exclude>*MethodAccess</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>jacoco-initialize</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                        <phase>test-compile</phase>
+                    </execution>
+                    <execution>
+                        <id>jacoco-site</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 
 </project>

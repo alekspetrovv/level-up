@@ -17,6 +17,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.bezkoder.springjwt.security.jwt.AuthEntryPointJwt;
 import com.bezkoder.springjwt.security.jwt.AuthTokenFilter;
 import com.bezkoder.springjwt.security.services.UserDetailsServiceImpl;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 @Configuration
 @EnableWebSecurity
@@ -65,5 +66,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
+
 
 }

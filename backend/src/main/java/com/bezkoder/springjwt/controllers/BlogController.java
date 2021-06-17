@@ -67,7 +67,7 @@ public class BlogController {
         String uploadDir = "src/main/resources/img/blogs/" + newBlog.getId();
         FileUtility.saveFile(uploadDir, fileName, multipartFile);
 
-        return new ResponseEntity<Blog>(newBlog, HttpStatus.CREATED);
+        return ResponseEntity.ok().body(newBlog);
     }
 
 
@@ -92,7 +92,7 @@ public class BlogController {
         }
 
         Blog updatedBlog = blogService.update(blog);
-        return new ResponseEntity<>(updatedBlog, HttpStatus.CREATED);
+        return ResponseEntity.ok().body(updatedBlog);
     }
 
     @DeleteMapping("/{id}")

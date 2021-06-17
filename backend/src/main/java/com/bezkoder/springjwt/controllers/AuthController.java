@@ -5,10 +5,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import javax.validation.Valid;
 
-import com.bezkoder.springjwt.models.Blog;
-import com.bezkoder.springjwt.security.services.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -29,6 +26,8 @@ import com.bezkoder.springjwt.repository.RoleRepository;
 import com.bezkoder.springjwt.repository.UserRepository;
 import com.bezkoder.springjwt.security.jwt.JwtUtils;
 import com.bezkoder.springjwt.security.services.UserDetailsImpl;
+
+import javax.validation.Valid;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
