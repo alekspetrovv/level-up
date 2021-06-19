@@ -3,14 +3,6 @@ label {
   margin-top: 10px;
 }
 
-/* html {
-  background: url("background.png");
-  height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-} */
-
 body{
   background: url("background.png");
 }

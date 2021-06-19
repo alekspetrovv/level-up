@@ -1,0 +1,21 @@
+version: "3"
+services:
+  levelup-jdbc:
+    image: levelup-jdbc
+    ports:
+      - "8080:8080"
+    networks:
+      - levelup-mysql
+    depends_on:
+      - mysqldb
+
+  mysqldb:
+    image: mysql
+    networks:
+      - levelup-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=levelup
+
+networks:
+  levelup-mysql:
