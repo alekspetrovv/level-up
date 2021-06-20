@@ -24,7 +24,8 @@ before_script:
   - docker info
 
 build_image:
+  stage: docker
   script:
-    - cd backend/Dockerfile
+    - cd backend
     - docker build -t my-docker-image .
-    - docker run my-docker-image /script/to/run/tests
+    - docker run my-docker-image 
