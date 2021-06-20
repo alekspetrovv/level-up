@@ -2,6 +2,7 @@ stages:
   - build
   - test
   - sonarqube
+  - docker
 build:
   stage: build
   script:
@@ -14,7 +15,16 @@ test:
     - mvn test
 
 sonarqube:
-  stage: test
+  stage: sonarqube
   script:
     - cd backend
     - mvn clean deploy sonar:sonar
+
+before_script:
+  - docker info
+
+build_image:
+  stage: docker
+  script:
+    - docker build -t my-docker-image .
+    - docker run my-docker-image /script/to/run/tests
