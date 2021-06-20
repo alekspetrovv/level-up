@@ -2,7 +2,6 @@ stages:
   - build
   - test
   - sonarqube
-  - docker
 build:
   stage: build
   script:
@@ -22,7 +21,7 @@ sonarqube:
 
 docker-build:
   image: docker:latest
-  stage: docker
+  stage: build
   services:
     - docker:dind
   before_script:
