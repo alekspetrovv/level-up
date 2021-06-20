@@ -2,6 +2,7 @@ stages:
   - build
   - test
   - sonarqube
+  - dockerizeSpring
 build:
   stage: build
   script:
@@ -18,3 +19,11 @@ sonarqube:
   script:
     - cd backend
     - mvn clean deploy sonar:sonar
+
+dockerizeSpring:
+  stage:dockerizeSpring
+  script:
+   - cd ./backend
+   - mvn clean install
+   - docker rmi backend
+   - docker build -t backend .
