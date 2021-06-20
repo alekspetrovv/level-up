@@ -3,6 +3,7 @@ stages:
   - test
   - sonarqube
   - dockerizeSpring
+  - dockerizeReact
 build:
   stage: build
   script:
@@ -26,3 +27,9 @@ dockerizeSpring:
     - "cd ./backend"
     - "mvn clean install"
     - "docker build -t backend ."
+
+dockerizeReact:
+  stage: dockerizeReact
+  script:
+    - "cd ./frontend"
+    - "docker build -t frontend ."
