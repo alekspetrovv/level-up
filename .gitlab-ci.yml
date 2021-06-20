@@ -21,9 +21,9 @@ sonarqube:
     - mvn clean deploy sonar:sonar
 
 dockerizeSpring:
-  stage:dockerizeSpring
+  stage: dockerizeSpring
   script:
-   - cd ./backend
-   - mvn clean install
-   - docker rmi backend
-   - docker build -t backend .
+    - "cd ./backend"
+    - "mvn clean install"
+    - "docker rmi backend"
+    - "docker build -t backend ."
