@@ -20,13 +20,11 @@ sonarqube:
     - cd backend
     - mvn clean deploy sonar:sonar
 
-services:
-  - docker:dind
-docker-job:
-  stage: docker
-  image: docker:dind
+before_script:
+  - docker info
+
+build_image:
   script:
-    - cd backend
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker build -t registry.gitlab.com/xxxxxx/gitlab-ci-cd .
-    - docker push registry.gitlab.com/xxxxxx/gitlab-ci-cd
+    - cd backend/Dockerfile
+    - docker build -t my-docker-image .
+    - docker run my-docker-image /script/to/run/tests
