@@ -25,5 +25,4 @@ dockerizeSpring:
   script:
     - "cd ./backend"
     - "mvn clean install"
-    - "docker rmi backend"
     - "docker build -t backend ."
